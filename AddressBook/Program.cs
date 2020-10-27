@@ -2,11 +2,20 @@
 
 namespace AddressBook
 {
+    /// <summary>
+    /// Program Class.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            /// Creating a Reference of AddressBook
+            AddressBook addressBook = new AddressBook();
+            addressBook.UserMenu();
         }
     }
 }
