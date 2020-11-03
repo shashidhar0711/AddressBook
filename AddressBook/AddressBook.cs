@@ -37,11 +37,12 @@ namespace AddressBook
             int zip = Convert.ToInt32(Console.ReadLine());
             Contact contact = new Contact(firstName, lastName, address, city, phoneNumber, zip);
             ContactList.Add(contact);
+            CheckForDuplicateContacts(contact, firstName, lastName);
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Contact created");
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
             //DisplayContact();
             //Console.WriteLine(contact.Tostring());
-
-            CheckForDuplicateContacts(contact, firstName, lastName);
         }
         /// <summary>
         /// Checks for duplicate contacts.
@@ -206,13 +207,16 @@ namespace AddressBook
             {
                 for (int index = 0; index < ContactList.Count; index++)
                 {
-                    Console.WriteLine(ContactList[index].GetFirstName());
-                    Console.WriteLine(ContactList[index].GetLastName());
-                    Console.WriteLine(ContactList[index].GetAddress());
-                    Console.WriteLine(ContactList[index].GetCity());
-                    Console.WriteLine(ContactList[index].GetState());
-                    Console.WriteLine(ContactList[index].GetPhoneNumber());
-                    Console.WriteLine(ContactList[index].GetZip());
+                    Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+                    Console.WriteLine("First Name : "+ContactList[index].GetFirstName());
+                    Console.WriteLine("Last Name : "+ContactList[index].GetLastName());
+                    Console.WriteLine("Address : "+ContactList[index].GetAddress());
+                    Console.WriteLine("City : "+ContactList[index].GetCity());
+                    Console.WriteLine("State : "+ContactList[index].GetState());
+                    Console.WriteLine("Phone Number : "+ContactList[index].GetPhoneNumber());
+                    Console.WriteLine("Zip Code : "+ContactList[index].GetZip());
+                    Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+
                 }
             }
             else
@@ -249,7 +253,9 @@ namespace AddressBook
                         /// Adding in to dictionary ie new book name
                         AddressBook addressBook = new AddressBook();
                         AddressBookDictionary.Add(bookName, addressBook);
+                        Console.WriteLine("--------------------------------------------------------------------------------------------------------");
                         Console.WriteLine("Contact created :" + bookName);
+                        Console.WriteLine("--------------------------------------------------------------------------------------------------------");
                         addressBook.UserMenu();
                         break;
 
@@ -258,7 +264,9 @@ namespace AddressBook
                         string oldBookName = GetBookNameToAccess();
                         if (AddressBookDictionary.ContainsKey(oldBookName) == true)
                         {
+                            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
                             Console.WriteLine("Welcome to" + oldBookName);
+                            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
                             AddressBookDictionary.GetValueOrDefault(oldBookName).UserMenu();
                         }
                         else
