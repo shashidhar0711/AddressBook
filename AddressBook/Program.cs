@@ -2,7 +2,7 @@
 
 namespace AddressBook
 {
-    class Program
+    public class Program
     {
         /// <summary>
         /// Defines the entry point of the application.
@@ -12,7 +12,7 @@ namespace AddressBook
         {
             /// Creating a Reference of AddressBook
             AddressBook addressBook = new AddressBook();
-            addressBook.UserMenu();
+            addressBook.BookManagementView();
         }
     }
 }

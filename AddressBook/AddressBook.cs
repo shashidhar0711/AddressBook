@@ -8,16 +8,12 @@ namespace AddressBook
         /// <summary>
         /// The contact list
         /// </summary>
-        List<Contact> ContactList;
-        private int choice;
+        List<Contact> ContactList = new List<Contact>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddressBook"/> class.
+        /// The address book dictionary
         /// </summary>
-        public AddressBook()
-        {
-            ContactList = new List<Contact>();
-        }
+        private Dictionary<string, AddressBook> AddressBookDictionary = new Dictionary<string, AddressBook>();
 
         /// <summary>
         /// Adds the contact.
@@ -39,6 +35,11 @@ namespace AddressBook
             Console.WriteLine("Enteryour zip code");
             int zip = Convert.ToInt32(Console.ReadLine());
             Contact contact = new Contact(firstName, lastName, address, city, phoneNumber, zip);
+            ContactList.Add(contact);
+            Console.WriteLine("Contact created");
+            //DisplayContact();
+            //Console.WriteLine(contact.Tostring());
+
             CheckForDuplicateContacts(contact, firstName, lastName);
         }
         /// <summary>
@@ -71,22 +72,29 @@ namespace AddressBook
         /// </summary>
         public void EditContact()
         {
-            Console.WriteLine("Enter your First Name");
-            string firstName = Console.ReadLine();
-
-            /// By Looping Untill Condtions Ends
-            for (int index = 0; index <= ContactList.Count; index++)
+            if(ContactList.Count == 0)
             {
-                /// Checking If Exist FirstName or not to purpose Edit
-                if (ContactList[index].GetFirstName().Equals(firstName))
+                Console.WriteLine("Contact List is Currently empty!!");
+            }
+            else
+            {
+                Console.WriteLine("Enter your First Name");
+                string firstName = Console.ReadLine();
+
+                /// By Looping Untill Condtions Ends
+                for (int index = 0; index < ContactList.Count; index++)
                 {
-                    /// It takes Choice to Edit at Particualar Position
-                    int choice = UserChoiceForEdit();
-                    EditContactList(ContactList[index], choice);
-                }
-                else
-                {
-                    Console.WriteLine("Does not Exist");
+                    /// Checking If Exist FirstName or not to purpose Edit
+                    if (ContactList[index].GetFirstName().Equals(firstName))
+                    {
+                        /// It takes Choice to Edit at Particualar Position
+                        int choice = UserChoiceForEdit();
+                        EditContactList(ContactList[index], choice);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Does not Exist");
+                    }
                 }
             }
 
@@ -173,14 +181,12 @@ namespace AddressBook
             string lastName = Console.ReadLine();
             for (int index = 0; index < ContactList.Count; index++)
             {
-                if (ContactList[index].GetFirstName().Equals(firstName))
+                if (ContactList[index].GetFirstName().Equals(firstName) && ContactList[index].GetLastName().Equals(lastName))
                 {
-                    if (ContactList[index].GetLastName().Equals(lastName))
-                    {
-                        /// It Checks, if Exist Contact will be Removed or deleted
-                        ContactList.RemoveAt(index);
-                        Console.WriteLine("Contact deleted Successfully");
-                    }
+                    /// It Checks, if Exist Contact will be Removed or deleted
+                    ContactList.Remove(ContactList[index]);
+                    //ContactList.RemoveAt(index);
+                    Console.WriteLine("Contact deleted Successfully");
                 }
                 else
                 {
@@ -195,11 +201,102 @@ namespace AddressBook
         /// </summary>
         public void DisplayContact()
         {
-            for (int index = 0; index <= ContactList.Count; index++)
+            if (ContactList.Count != 0)
             {
-                Console.WriteLine("Dsplay the Contacts : " + ToString());
+                for (int index = 0; index < ContactList.Count; index++)
+                {
+                    Console.WriteLine(ContactList[index].GetFirstName());
+                    Console.WriteLine(ContactList[index].GetLastName());
+                    Console.WriteLine(ContactList[index].GetAddress());
+                    Console.WriteLine(ContactList[index].GetCity());
+                    Console.WriteLine(ContactList[index].GetState());
+                    Console.WriteLine(ContactList[index].GetPhoneNumber());
+                    Console.WriteLine(ContactList[index].GetZip());
+                }
+            }
+            else
+            {
+                Console.WriteLine("No contact to display");
             }
 
+        }
+
+        /// <summary>
+        /// management view to Create new address book 
+        /// </summary>
+        public void BookManagementView()
+        {
+            int choice;
+            do
+            {
+                Console.WriteLine("Enter your Choice");
+                Console.WriteLine("Press 1 to create New Address Book");
+                Console.WriteLine("press 2 to Access Existing Adderss Book");
+                Console.WriteLine("press 3 to exit");
+                choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        /// New Book Name 
+                        string bookName = GetNewAddressBook();
+                        if (AddressBookDictionary.ContainsKey(bookName) == true)
+                        {
+                            Console.WriteLine("Already exist");
+                        }
+
+                        /// Create a Refernce of AddressBook
+                        /// Adding in to dictionary ie new book name
+                        AddressBook addressBook = new AddressBook();
+                        AddressBookDictionary.Add(bookName, addressBook);
+                        Console.WriteLine("Contact created :" + bookName);
+                        addressBook.UserMenu();
+                        break;
+
+                    case 2:
+                        /// Old Book Name 
+                        string oldBookName = GetBookNameToAccess();
+                        if (AddressBookDictionary.ContainsKey(oldBookName) == true)
+                        {
+                            Console.WriteLine("Welcome to" + oldBookName);
+                            AddressBookDictionary.GetValueOrDefault(oldBookName).UserMenu();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry! No such Address book exist");
+                        }
+                        break;
+
+                    case 3:
+                        break;
+
+                    default:
+                        Console.WriteLine("Enter Valid Choice between 1 to 3");
+                        break;
+                }
+            } while (choice != 3);
+
+        }
+
+        /// <summary>
+        /// Gets the book name to access.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetBookNameToAccess()
+        {
+            Console.WriteLine("Enter Book Name to Access");
+            string contactOldBook = Console.ReadLine();
+            return contactOldBook;
+        }
+
+        /// <summary>
+        /// Gets the new address book.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetNewAddressBook()
+        {
+            Console.WriteLine("Enter the Book Name");
+            string contactBook = Console.ReadLine();
+            return contactBook;
         }
 
         /// <summary>
@@ -211,7 +308,7 @@ namespace AddressBook
             Console.WriteLine("Press 1 to Add contact");
             Console.WriteLine("Press 2 to Edit contact");
             Console.WriteLine("Press 3 to Delete contact");
-            Console.WriteLine("Press 3 to Exit");
+            Console.WriteLine("Press 4 to Display Contact");
             int choice = Convert.ToInt32(Console.ReadLine());
 
             /// By Using Switch Method to Perform Specified Operation
@@ -219,6 +316,7 @@ namespace AddressBook
             {
                 case 1:
                     AddContact();
+                    DisplayContact();
                     break;
                 case 2:
                     EditContact();

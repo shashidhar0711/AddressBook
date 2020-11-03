@@ -47,6 +47,15 @@ namespace AddressBook
             this.zip = zip;
         }
 
+        public Contact(string firstName, string lastName, string address, string city, long phoneNumber, long zip1)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.city = city;
+            this.phoneNumber = phoneNumber;
+        }
+
         /// <summary>
         /// Gets the first name.
         /// </summary>

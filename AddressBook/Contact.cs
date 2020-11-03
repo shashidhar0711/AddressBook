@@ -26,7 +26,7 @@ namespace AddressBook
         /// <param name="zip">The zip.</param>
         /// <param name="phoneNumber">The phone number.</param>
         /// <param name="email">The email.</param>
-        public Contact(string firstName, string lastName, string address, string city, string state, long phoneNumber, int zip)
+        public Contacts(string firstName, string lastName, string address, string city, string state, long phoneNumber, int zip)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -35,16 +35,6 @@ namespace AddressBook
             this.state = state;
             this.zip = zip;
             this.phoneNumber = phoneNumber;
-        }
-
-        public Contact(string firstName, string lastName, string address, string city, long phoneNumber, int zip)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.phoneNumber = phoneNumber;
-            this.zip = zip;
         }
 
         /// <summary>
@@ -179,10 +169,18 @@ namespace AddressBook
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
-        public string Tostring()
+        public void Tostring()
         {
-            return "FirstName : " + firstName + " LastName : " + lastName + " Address : " + address + " City : " + city + "State : " + state +
-                " Zip Code :" + zip + " Phone Number : " + phoneNumber;
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("FirstName : " + firstName);
+            Console.WriteLine(" LastName : " + lastName);
+            Console.WriteLine(" Address : " + address);
+            Console.WriteLine(" City : " + city);
+            Console.WriteLine("State : " + state);
+            Console.WriteLine(" Zip Code :" + zip);
+            Console.WriteLine(" Phone Number : " + phoneNumber);
+            Console.WriteLine("-------------------------------");
+
         }
     }
 }
