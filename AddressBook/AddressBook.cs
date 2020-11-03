@@ -305,33 +305,38 @@ namespace AddressBook
         /// </summary>
         public void UserMenu()
         {
-            Console.WriteLine("Enter ur Choice:");
-            Console.WriteLine("Press 1 to Add contact");
-            Console.WriteLine("Press 2 to Edit contact");
-            Console.WriteLine("Press 3 to Delete contact");
-            Console.WriteLine("Press 4 to Display Contact");
-            int choice = Convert.ToInt32(Console.ReadLine());
-
-            /// By Using Switch Method to Perform Specified Operation
-            switch (choice)
+            int choice;
+            do
             {
-                case 1:
-                    AddContact();
-                    DisplayContact();
-                    break;
-                case 2:
-                    EditContact();
-                    break;
-                case 3:
-                    DeleteContact();
-                    break;
-                case 4:
-                    DisplayContact();
-                    break;
-                default:
-                    Console.WriteLine("Enter a Valid Choice Try again :");
-                    break;
-            }
+                Console.WriteLine("Enter ur Choice:");
+                Console.WriteLine("Press 1 to Add contact");
+                Console.WriteLine("Press 2 to Edit contact");
+                Console.WriteLine("Press 3 to Delete contact");
+                Console.WriteLine("Press 4 to Display Contact");
+                Console.WriteLine("Press 5 to Exit");
+                choice = Convert.ToInt32(Console.ReadLine());
+
+                /// By Using Switch Method to Perform Specified Operation
+                switch (choice)
+                {
+                    case 1:
+                        AddContact();
+                        DisplayContact();
+                        break;
+                    case 2:
+                        EditContact();
+                        break;
+                    case 3:
+                        DeleteContact();
+                        break;
+                    case 4:
+                        DisplayContact();
+                        break;
+                    default:
+                        Console.WriteLine("Enter a Valid Choice Try again :");
+                        break;
+                }
+            }while(choice != 5) ;
         }
     }
 }
