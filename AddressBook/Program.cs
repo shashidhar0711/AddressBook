@@ -1,10 +1,11 @@
-﻿using System;
+/// Including the requried assemblies in to the program
+using System;
 
 namespace AddressBook
 {
     public class Program
     {
-        /// <summary>
+      /// <summary>
         /// Defines the entry point of the application.
         /// </summary>
         /// <param name="args">The arguments.</param>
@@ -14,5 +15,5 @@ namespace AddressBook
             AddressBook addressBook = new AddressBook();
             addressBook.BookManagementView();
         }
-    }
+    } 
 }
