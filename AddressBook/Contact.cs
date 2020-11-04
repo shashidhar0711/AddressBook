@@ -6,75 +6,105 @@ namespace AddressBook
 {
     public class Contact
     {
-        /// <summary>
         /// Variables
-        /// </summary>
-        private String fname;
-        private String lname; 
-        private String add;  
-        private String city; 
-        private String state; 
-        private long phonenumber; 
-        private int zip; 
+        public string firstName;
+        public string lastName;
+        public string address;
+        public string city;
+        public string state;
+        public int zip;
+        public long phoneNumber;
 
         /// <summary>
-        /// Contacts the specified details.
+        /// Initializes a new instance of the <see cref="Contact"/> class.
         /// </summary>
-        /// <param name="fname">The fname.</param>
-        /// <param name="lname">The lname.</param>
-        /// <param name="add">The add.</param>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="address">The address.</param>
         /// <param name="city">The city.</param>
         /// <param name="state">The state.</param>
-        /// <param name="phonenumber">The phonenumber.</param>
-        /// <param name="pin">The pin.</param>
-        public Contact(String fname, String lname, String add, String city, String state, long phonenumber, int pin)
+        /// <param name="zip">The zip.</param>
+        /// <param name="phoneNumber">The phone number.</param>
+        /// <param name="email">The email.</param>
+        public Contact(string firstName, string lastName, string address, string city, string state, long phoneNumber, int zip)
         {
-            this.fname = fname;
-            this.lname = lname;
-            this.add = add;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
             this.city = city;
             this.state = state;
-            this.phonenumber = phonenumber;
-            this.zip = pin;
-        }
-      
-        /// Returns the first name of a Contact
-        public String GetfName()
-        {
-            return fname;
+            this.zip = zip;
+            this.phoneNumber = phoneNumber;
         }
 
-        /// Returns the last name of a Contact
-        public String GetlName()
+        public Contact(string firstName, string lastName, string address, string city, long phoneNumber, int zip)
         {
-            return lname;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.city = city;
+            this.phoneNumber = phoneNumber;
+            this.zip = zip;
         }
 
-        /// Returns the address of a Contact
-        public String GetAdd()
+        /// <summary>
+        /// Gets the first name.
+        /// </summary>
+        /// <returns></returns>
+        public string GetFirstName()
         {
-            return add;
+            return firstName;
         }
 
-        /// Returns the city of a Contact
-        public String GetCity()
+        /// <summary>
+        /// Gets the last name.
+        /// </summary>
+        /// <returns></returns>
+        public string GetLastName()
+        {
+            return lastName;
+        }
+
+        /// <summary>
+        /// Gets the address.
+        /// </summary>
+        /// <returns></returns>
+        public string GetAddress()
+        {
+            return address;
+        }
+
+        /// <summary>
+        /// Gets the city.
+        /// </summary>
+        /// <returns></returns>
+        public string GetCity()
         {
             return city;
         }
-      
-        /// Returns the state of a Contact
-        public String GetState()
+
+        /// <summary>
+        /// Gets the state.
+        /// </summary>
+        /// <returns></returns>
+        public string GetState()
         {
             return state;
         }
-      
-        /// Returns the phone number of a Contact
-        public long GetNumber()
+
+        /// <summary>
+        /// Gets the phone number.
+        /// </summary>
+        /// <returns></returns>
+        public long GetPhoneNumber()
         {
-            return phonenumber;
+            return phoneNumber;
         }
 
-        /// Returns the zip number of a Contact
+        /// <summary>
+        /// Gets the zip.
+        /// </summary>
+        /// <returns></returns>
         public int GetZip()
         {
             return zip;
@@ -151,9 +181,9 @@ namespace AddressBook
         /// </returns>
         public string Tostring()
         {
+            Console.WriteLine("---------------------------------------------------------------------------------------------");
             return "FirstName : " + firstName + " LastName : " + lastName + " Address : " + address + " City : " + city + "State : " + state +
                 " Zip Code :" + zip + " Phone Number : " + phoneNumber;
         }
     }
 }
-
