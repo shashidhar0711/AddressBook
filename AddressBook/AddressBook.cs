@@ -41,8 +41,8 @@ namespace AddressBook
             int zip = Convert.ToInt32(Console.ReadLine());
             Contact contact = new Contact(firstName, lastName, address, city, phoneNumber, zip);
             ContactList.Add(contact);
+            Console.WriteLine("Contact created");
             CheckForDuplicateContacts(contact, firstName, lastName);
-            //Console.WriteLine("Contact created");
         }
 
         /// <summary>
@@ -61,6 +61,7 @@ namespace AddressBook
                 if (ContactList[index].GetFirstName().Equals(firstName) && ContactList[index].GetLastName().Equals(lastName))
                 {
                     Console.WriteLine("Contact is already Exists in Address Book");
+                    break;
                 }
                 else
                 {
@@ -281,12 +282,26 @@ namespace AddressBook
                         break;
 
                     case 3:
-                        SearchByCity();
+                        if(addressBookDictionary.Count() == 0)
+                        {
+                            Console.WriteLine("Not Found! Unbale to search by city");
+                        }
+                        else
+                        {
+                            SearchByCity();
+                        }
                         break;
 
                     case 4:
                         /// It checks, if dictionary is empty
-                        ViewingPersonByGivingCityOrState();
+                        if (addressBookDictionary.Count() == 0)
+                        {
+                            Console.WriteLine("Not Found! Unbale to search by city");
+                        }
+                        else
+                        {
+                            ViewingPersonByGivingCityOrState();
+                        }
                         break;
                     case 5:
                         break;
@@ -296,7 +311,7 @@ namespace AddressBook
                         break;
                 }
 
-            } while (choice != 6);
+            } while (choice != 5);
 
         }
 
@@ -324,6 +339,7 @@ namespace AddressBook
                 }
             }
 
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Contact by City");
             foreach (KeyValuePair<string, string> element in cityDictionary)
             {
@@ -337,7 +353,7 @@ namespace AddressBook
                 Console.WriteLine("Key = {0}, Value = {1}", element.Key, " == " + element.Value);
             }
             Console.WriteLine("Total Count By state :" + stateDictionary.Count);
-
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
         }
 
         /// <summary>
