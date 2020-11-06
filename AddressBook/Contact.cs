@@ -22,19 +22,16 @@ namespace AddressBook
         /// <param name="lastName">The last name.</param>
         /// <param name="address">The address.</param>
         /// <param name="city">The city.</param>
-        /// <param name="state">The state.</param>
-        /// <param name="zip">The zip.</param>
         /// <param name="phoneNumber">The phone number.</param>
-        /// <param name="email">The email.</param>
+        /// <param name="zip">The zip.</param>
         public Contact(string firstName, string lastName, string address, string city, string state, long phoneNumber, int zip)
         {
             this.firstName = firstName;
             this.lastName = lastName;
             this.address = address;
             this.city = city;
-            this.state = state;
-            this.zip = zip;
             this.phoneNumber = phoneNumber;
+            this.zip = zip;
         }
 
         /// <summary>

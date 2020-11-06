@@ -38,7 +38,7 @@ namespace AddressBook
             long phoneNumber = Convert.ToInt64(Console.ReadLine());
             Console.WriteLine("Enteryour zip code");
             int zip = Convert.ToInt32(Console.ReadLine());
-            Contact contact = new Contact(firstName, lastName, address, city, phoneNumber, zip);
+            Contact contact = new Contact(firstName, lastName, address, city, state, phoneNumber, zip);
             ContactList.Add(contact);
             Console.WriteLine("Contact created");
             CheckForDuplicateContacts(contact, firstName, lastName);
