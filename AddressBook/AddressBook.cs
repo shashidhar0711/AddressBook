@@ -7,7 +7,6 @@ namespace AddressBook
 {
     public class AddressBook
     {
-
         /// <summary>
         /// The contact list
         /// </summary>
