@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -35,16 +35,6 @@ namespace AddressBook
             this.state = state;
             this.zip = zip;
             this.phoneNumber = phoneNumber;
-        }
-
-        public Contact(string firstName, string lastName, string address, string city, long phoneNumber, int zip)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.phoneNumber = phoneNumber;
-            this.zip = zip;
         }
 
         /// <summary>
