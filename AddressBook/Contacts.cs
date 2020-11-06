@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -181,7 +181,6 @@ namespace AddressBook
         /// </returns>
         public string Tostring()
         {
-            Console.WriteLine("---------------------------------------------------------------------------------------------");
             return "FirstName : " + firstName + " LastName : " + lastName + " Address : " + address + " City : " + city + "State : " + state +
                 " Zip Code :" + zip + " Phone Number : " + phoneNumber;
         }
