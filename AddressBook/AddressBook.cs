@@ -342,14 +342,14 @@ namespace AddressBook
             Console.WriteLine("Contact by City");
             foreach (KeyValuePair<string, string> element in cityDictionary)
             {
-                Console.WriteLine("Key = {0}, Value = {1}", element.Key + " == " + element.Value);
+                Console.WriteLine( element.Key + " == " + element.Value);
             }
             Console.WriteLine("Total Count By city :" +cityDictionary.Count);
 
             Console.WriteLine("Contact by state");
             foreach (KeyValuePair<string, string> element in stateDictionary)
             {
-                Console.WriteLine("Key = {0}, Value = {1}", element.Key, " == " + element.Value);
+                Console.WriteLine(element.Key, " == " + element.Value);
             }
             Console.WriteLine("Total Count By state :" + stateDictionary.Count);
             Console.WriteLine("--------------------------------------------------------------------------------------------------------");
