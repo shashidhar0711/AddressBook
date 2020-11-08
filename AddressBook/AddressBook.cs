@@ -24,7 +24,7 @@ namespace AddressBook
         /// </summary>
         public void AddContact()
         {
-            Console.WriteLine("Enter First Name");
+            Console.WriteLine("Enter First Name :");
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name");
             string lastName = Console.ReadLine();
