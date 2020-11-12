@@ -10,8 +10,8 @@ namespace AddressBook
             Console.WriteLine("Welcome to Address Book");
             /// Creating a Reference of AddressBook
             AddressBook addressBook = new AddressBook();
-            //addressBook.BookManagementView();
-            addressBook.ReadFromCsvFile();
+            addressBook.BookManagementView();
+           // addressBook.ReadFromCsvFile();
         }
     }
 }

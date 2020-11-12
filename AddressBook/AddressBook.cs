@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace AddressBook
 {
@@ -529,7 +528,8 @@ namespace AddressBook
                 Console.WriteLine("Press 8 to Sort by zip");
                 Console.WriteLine("Press 9 to Writing contacts in to address book text file");
                 Console.WriteLine("Press 10 to Reading form Csv file");
-                Console.WriteLine("Press 11 to exit");
+                Console.WriteLine("Press 11 to write to csv");
+                Console.WriteLine("press 12 to Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 /// By Using Switch Method to Perform Specified Operation
@@ -573,7 +573,7 @@ namespace AddressBook
                         Console.WriteLine("Enter a Valid Choice Try again :");
                         break;
                 }
-            } while (choice != 11);
+            } while (choice != 12);
         }
 
         /// <summary>
@@ -607,7 +607,7 @@ namespace AddressBook
         public void ReadFromCsvFile()
         {
             /// csv file path
-            string csvFilePath = @"C:\Users\Theja\source\repos\AddressBook\AddressBook\AddressData.csv";
+            string csvFilePath = @"C:\Users\Theja\source\repos\AddressBook\AddressBook\AddressBook.csv";
 
             /// Reading from csv file
             using (var reader = new StreamReader(csvFilePath))
@@ -623,6 +623,7 @@ namespace AddressBook
                         Console.WriteLine("\t" + contactData.address);
                         Console.WriteLine("\t" + contactData.city);
                         Console.WriteLine("\t" + contactData.state);
+                        Console.WriteLine("\t" + contactData.phoneNumber);
                         Console.WriteLine("\t" + contactData.zip);
                         Console.WriteLine("\n");
                     }
@@ -637,16 +638,13 @@ namespace AddressBook
         public void WriteToCsvFile(List<Contact> records)
         {
             /// csv file path
-            string csvFilePath = @"C:\Users\Theja\source\repos\AddressBook\AddressBook\AddressData.csv";
+            string csvFilePath = @"C:\Users\Theja\source\repos\AddressBook\AddressBook\AddressBook.csv";
 
             /// Reading from csv file
             using (var writer = new StreamWriter(csvFilePath))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                foreach (Contact contactData in records)
-                {
-                    csv.WriteRecords(records);
-                }
+                csvWriter.WriteRecords(records);
             }
         }
     }
